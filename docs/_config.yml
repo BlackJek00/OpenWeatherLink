@@ -1,0 +1,14 @@
+title: Davis VP2 WiFi Gateway
+description: Send your Vantage Pro2 weather data to the internet with an ESP32-S3 instead of a PC
+firmware_version: 1.1.0
+
+markdown: kramdown
+kramdown:
+  input: GFM
+
+# Every page uses the documentation layout unless it says otherwise (the front page uses "home")
+defaults:
+  - scope:
+      path: ""
+    values:
+      layout: page

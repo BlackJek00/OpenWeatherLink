@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{{ site.title }}</title>
+  <meta name="description" content="{{ site.description }}">
+  <meta property="og:title" content="{{ site.title }}">
+  <meta property="og:description" content="{{ site.description }}">
+  <link rel="icon" href="assets/icons/logo.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="assets/css/site.css">
+</head>
+<body class="home">
+{% include nav.html %}
+
+<header class="hero">
+  <div class="wrap hero-grid">
+    <div class="hero-text">
+      <p class="eyebrow">{{ page.eyebrow }}</p>
+      <h1>{{ page.headline }}</h1>
+      <p class="lead">{{ page.lead }}</p>
+      <div class="actions">
+        <a class="btn btn-primary" href="guide.html">Read the setup guide</a>
+        {% if site.github.repository_url %}<a class="btn btn-ghost" href="{{ site.github.repository_url }}">View on GitHub</a>{% endif %}
+      </div>
+      <ul class="pills">
+        {% for p in page.pills %}<li>{{ p }}</li>{% endfor %}
+        <li>Firmware {{ site.firmware_version }}</li>
+      </ul>
+    </div>
+
+    <figure class="reading" aria-label="Example of what the board reports">
+      <div class="reading-head">
+        <span class="reading-host">{{ page.reading.host }}</span>
+        <span class="reading-status"><i></i>Console OK</span>
+      </div>
+      <div class="reading-main">
+        <span class="reading-temp">{{ page.reading.temp }}<small>°C</small></span>
+        <span class="reading-sub">{{ page.reading.sub }}</span>
+      </div>
+      <div class="reading-tiles">
+        {% for t in page.reading.tiles %}
+        <div class="tile"><span class="tile-label">{{ t.label }}</span><span class="tile-value">{{ t.value }} <small>{{ t.unit }}</small></span></div>
+        {% endfor %}
+      </div>
+      <figcaption>Example reading</figcaption>
+    </figure>
+  </div>
+</header>
+
+<main>
+  <section id="features" class="section">
+    <div class="wrap">
+      <h2>{{ page.features_title }}</h2>
+      <p class="section-lead">{{ page.features_lead }}</p>
+      <div class="cards">
+        {% for f in page.features %}
+        <article class="card">
+          <span class="icon"><img src="assets/icons/{{ f.icon }}.svg" alt="" width="24" height="24"></span>
+          <h3>{{ f.title }}</h3>
+          <p>{{ f.text }}</p>
+        </article>
+        {% endfor %}
+      </div>
+    </div>
+  </section>
+
+  <section id="how" class="section band">
+    <div class="wrap">
+      <h2>How it works</h2>
+      <p class="section-lead">{{ page.how_lead }}</p>
+      <div class="flow">
+        <picture>
+          <source media="(max-width: 640px)" srcset="assets/flow-vertical.svg">
+          <img src="assets/flow.svg" alt="Vantage Pro2 console, WeatherLink USB logger, ESP32-S3 gateway and the services it uploads to">
+        </picture>
+      </div>
+      <ol class="how">
+        {% for s in page.how %}<li><h3>{{ s.title }}</h3><p>{{ s.text }}</p></li>{% endfor %}
+      </ol>
+    </div>
+  </section>
+
+  <section id="parts" class="section">
+    <div class="wrap two-col">
+      <div>
+        <h2>What you need</h2>
+        <p class="section-lead">{{ page.parts_lead }}</p>
+      </div>
+      <ul class="parts">
+        {% for p in page.parts %}<li><strong>{{ p.name }}</strong><span>{{ p.note }}</span></li>{% endfor %}
+      </ul>
+    </div>
+  </section>
+
+  <section id="start" class="section band">
+    <div class="wrap">
+      <h2>Quick start</h2>
+      <p class="section-lead">{{ page.start_lead }}</p>
+      <ol class="steps">
+        {% for s in page.steps %}<li><h3>{{ s.title }}</h3>{{ s.text | markdownify }}</li>{% endfor %}
+      </ol>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap prose narrow">
+      {{ content }}
+    </div>
+  </section>
+
+  <section class="cta">
+    <div class="wrap cta-inner">
+      <div>
+        <h2>{{ page.cta_title }}</h2>
+        <p>{{ page.cta_text }}</p>
+      </div>
+      <a class="btn btn-primary" href="guide.html">Open the setup guide</a>
+    </div>
+  </section>
+</main>
+
+{% include footer.html %}
+</body>
+</html>

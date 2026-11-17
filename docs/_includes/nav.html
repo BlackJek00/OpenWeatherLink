@@ -1,0 +1,14 @@
+<nav class="topnav">
+  <div class="wrap nav-inner">
+    <a class="brand" href="./">
+      <img src="assets/icons/logo.svg" alt="" width="28" height="28">
+      <span>{{ site.title }}</span>
+    </a>
+    <div class="nav-links">
+      <a href="./#features">Features</a>
+      <a href="./#start">Quick start</a>
+      <a href="guide.html">Guide</a>
+      {% if site.github.repository_url %}<a href="{{ site.github.repository_url }}">GitHub</a>{% endif %}
+    </div>
+  </div>
+</nav>
